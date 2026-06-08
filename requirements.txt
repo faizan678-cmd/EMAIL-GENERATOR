@@ -6,3 +6,5 @@ langchain_core
 requests
 mistralai
 langchain_mistralai
+gunicorn app:app
+gunicorn
