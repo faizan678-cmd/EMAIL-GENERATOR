@@ -1,0 +1,427 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Real Estate Email Generator | By Faizan</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+    min-height:100vh;
+    background:linear-gradient(-45deg,#0f172a,#1e293b,#0f766e,#14532d);
+    background-size:400% 400%;
+    animation:bg 15s ease infinite;
+    color:white;
+}
+
+@keyframes bg{
+    0%{background-position:0% 50%;}
+    50%{background-position:100% 50%;}
+    100%{background-position:0% 50%;}
+}
+
+.container{
+    width:90%;
+    max-width:1000px;
+    margin:auto;
+    padding:40px 0;
+}
+
+.header{
+    text-align:center;
+    margin-bottom:35px;
+}
+
+.header h1{
+    font-size:3rem;
+    margin-bottom:10px;
+}
+
+.header p{
+    opacity:.9;
+}
+
+.badge{
+    display:inline-block;
+    margin-top:10px;
+    background:#22c55e;
+    padding:8px 18px;
+    border-radius:50px;
+    font-weight:600;
+}
+
+.glass{
+    background:rgba(255,255,255,.08);
+    backdrop-filter:blur(15px);
+    border:1px solid rgba(255,255,255,.15);
+    border-radius:25px;
+    padding:30px;
+    box-shadow:0 10px 35px rgba(0,0,0,.3);
+}
+
+.form-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:20px;
+}
+
+@media(max-width:768px){
+    .form-grid{
+        grid-template-columns:1fr;
+    }
+
+    .header h1{
+        font-size:2rem;
+    }
+}
+
+.input-box{
+    display:flex;
+    flex-direction:column;
+}
+
+.input-box label{
+    margin-bottom:8px;
+    font-weight:500;
+}
+
+.input-box input,
+.input-box select{
+    padding:14px;
+    border:none;
+    outline:none;
+    border-radius:12px;
+    background:rgba(255,255,255,.12);
+    color:white;
+}
+
+.input-box input::placeholder{
+    color:#ddd;
+}
+
+.input-box select option{
+    color:black;
+}
+
+.btn{
+    width:100%;
+    margin-top:25px;
+    padding:15px;
+    border:none;
+    border-radius:14px;
+    background:#22c55e;
+    color:white;
+    font-size:18px;
+    font-weight:600;
+    cursor:pointer;
+    transition:.3s;
+}
+
+.btn:hover{
+    transform:translateY(-3px);
+}
+
+.result{
+    margin-top:25px;
+    padding:25px;
+    border-radius:20px;
+    background:rgba(0,0,0,.25);
+}
+
+#generatedEmail{
+    margin-top:15px;
+    white-space:pre-wrap;
+    line-height:1.8;
+}
+
+.copy-btn{
+    margin-top:20px;
+    padding:12px 25px;
+    border:none;
+    border-radius:12px;
+    background:#22c55e;
+    color:white;
+    cursor:pointer;
+    font-weight:600;
+}
+
+.copy-btn:hover{
+    opacity:.9;
+}
+
+.section{
+    margin-top:30px;
+}
+
+.ads-box{
+    margin-top:15px;
+    padding:40px;
+    border-radius:20px;
+    border:2px dashed rgba(255,255,255,.25);
+    text-align:center;
+}
+
+.donate{
+    text-align:center;
+    margin-top:30px;
+}
+
+.donate a{
+    text-decoration:none;
+    background:#f59e0b;
+    color:white;
+    padding:15px 30px;
+    border-radius:50px;
+    display:inline-block;
+    font-weight:600;
+}
+
+footer{
+    text-align:center;
+    margin-top:35px;
+    opacity:.8;
+}
+
+</style>
+</head>
+<body>
+
+<div class="container">
+
+    <div class="header">
+        <h1>🏠 Real Estate Email Generator</h1>
+        <p>Create Professional Property Emails Instantly </p>
+
+        <div class="badge">Developer: Faizan <br> Scroll Below For Generated Email </div>
+    </div>
+
+    <div class="glass">
+
+        <form action="/ask" method="POST">
+
+            <div class="form-grid">
+
+                <div class="input-box">
+                    <label>Recipient's Name</label>
+                    <input
+                    type="text"
+                    id="recipient"
+                    placeholder="faizan, mehvish "
+                    required>
+                </div>
+
+                <div class="input-box">
+                    <label>Property Type</label>
+                    <input
+                    type="text"
+                    id="property_type"
+                    placeholder="Apartment, Plot, Villa"
+                    required>
+                </div>
+
+                <div class="input-box">
+                    <label>Location</label>
+                    <input
+                    type="text"
+                    id="location"
+                    placeholder="Delhi, Mumbai,kashmir"
+                    required>
+                </div>
+
+                <div class="input-box">
+                    <label>Size</label>
+                    <input
+                    type="text"
+                    id="size"
+                    placeholder="1200 Sq Ft"
+                    required>
+                </div>
+
+                <div class="input-box">
+                    <label>Price</label>
+                    <input
+                    type="text"
+                    id="price"
+                    placeholder="₹50 Lakh,1 cr"
+                    required>
+                </div>
+
+                <div class="input-box">
+                    <label>Purpose</label>
+                    <select id="purpose">
+                        <option>For Sale</option>
+                        <option>For Rent</option>
+                    </select>
+                </div>
+
+            </div>
+
+            <input
+            type="hidden"
+            name="question"
+            id="question">
+
+            <button type="submit" class="btn">
+                Generate Professional Email
+            </button>
+
+        </form>
+
+        {% if answer %}
+
+        <div class="result">
+
+            <h2>📧 Generated Email</h2>
+
+            <div id="generatedEmail">
+                {{ answer }}
+            </div>
+
+            <button
+            type="button"
+            class="copy-btn"
+            onclick="copyEmail()">
+                📋 Copy All
+            </button>
+
+        </div>
+
+        {% endif %}
+
+    </div>
+
+    <div class="glass section">
+
+        <h2>Google AdSense Area</h2>
+
+        <div class="ads-box">
+
+            PLACE YOUR ADSENSE CODE HERE
+
+            <br><br>
+
+            <!-- Paste Google AdSense Code -->
+
+        </div>
+
+    </div>
+
+    <div class="donate">
+        <a href="tel:7889429723">
+            ❤️ Donate / Support : whatsapp
+        </a>
+    </div>
+
+    <div class="glass section">
+
+        <h2>About Us</h2>
+
+        <p>
+            Real Estate Email Generator helps real estate agents,
+            brokers and property dealers generate professional
+            property marketing emails within seconds.
+        </p>
+
+    </div>
+
+    <div class="glass section">
+
+        <h2>Privacy Policy</h2>
+
+        <p>
+            We respect your privacy. Information entered on this
+            website is only used for generating professional
+            property-related email content.
+        </p>
+
+    </div>
+
+    <footer>
+        © 2026 Real Estate Email Generator |
+        Developer: Faizan |
+        All Rights Reserved
+    </footer>
+
+</div>
+
+<script>
+
+document.querySelector("form").addEventListener("submit", function(){
+
+    const recipient =
+    document.getElementById("recipient").value;
+
+    const propertyType =
+    document.getElementById("property_type").value;
+
+    const location =
+    document.getElementById("location").value;
+
+    const size =
+    document.getElementById("size").value;
+
+    const price =
+    document.getElementById("price").value;
+
+    const purpose =
+    document.getElementById("purpose").value;
+
+    const prompt =
+`Generate a professional real estate email.
+
+Recipient Name: ${recipient}
+Property Type: ${propertyType}
+Location: ${location}
+Size: ${size}
+Price: ${price}
+Purpose: ${purpose}
+
+Create a complete professional email.
+
+Include:
+- Subject
+- Greeting
+- Email Body
+- Call To Action
+- Closing
+
+End every email with:
+
+Best Regards,
+Faizan
+Real Estate Consultant`;
+
+    document.getElementById("question").value =
+    prompt;
+
+});
+
+function copyEmail(){
+
+    const text =
+    document.getElementById("generatedEmail").innerText;
+
+    navigator.clipboard.writeText(text);
+
+    alert("Email Copied Successfully!");
+
+}
+
+</script>
+
+</body>
+</html>
+```
+s
