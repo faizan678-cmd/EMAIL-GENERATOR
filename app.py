@@ -3,11 +3,11 @@ from bot import get_answer
 
 app = Flask(__name__)
 
-@app.route("/")
+@app.route("/", methods =["GET", "POST"])
 def home():
     return render_template("index.html")
 
-@app.route("/ask", methods=["POST"])
+@app.route("/ask", methods=[ "POST"])
 def ask():
     question = request.form["question"]
 
